@@ -1,2 +1,10 @@
 
 .DS_Store
+data/split/*
+demo0*/exp*/*
+demo0*/post
+demo0*/*.log
+demo0*/temp/*
+demo0*/output.xml
+
+
