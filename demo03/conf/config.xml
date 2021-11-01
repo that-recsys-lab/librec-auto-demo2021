@@ -21,18 +21,17 @@
 	</splitter>
 	
 	<!-- ALGORITHM SECTION -->
-	<!-- Using Bilateral Variational Autoencoder for demonstration purposes. -->
+	<!-- Using Standard Variational Autoencoder for demonstration purposes. -->
 	<alg>
 	   <script lang="python3" src="system">
 	      <script-name>ms_recommend_wrapper.py</script-name>
 	      <param name="model">StandardVAE</param>
 	      <param name="LATENT_DIM">50</param>
 	      <param name="ENCODER_DIMS">32</param>
-	      <param name="ACT_FUNC">tanh</param>
-	      <param name="LIKELIHOOD">pois</param>
+	      <param name="INTERMEDIATE_DIM">200</param>
 	      <param name="NUM_EPOCHS">100</param>
 	      <param name="BATCH_SIZE">128</param>
-	      <param name="LEARNING_RATE">0.001</param>
+		  <param name="BINARIZATION_THRESHOLD">3.5</param>
 	   </script>
 	</alg>
 
