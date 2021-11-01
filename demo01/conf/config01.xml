@@ -44,7 +44,7 @@
 		<script lang="python3" src="system">
 			<script-name>far_rerank.py</script-name>
 			<param name="max_len">10</param>
-			<param name="lambda">0.3</param>
+			<param name="lambda"><value>0.0</value><value>0.3</value></param>
 			<param name="binary">False</param>
 			<param ref="fea:new"/>
 		</script>
@@ -54,7 +54,7 @@
 	<metric>
 		<ranking>true</ranking>
 		<list-size>50</list-size>
-		<class>ndcg,precision,psp</class>
+		<class>ndcg,precision,icov</class>
 		<protected-feature ref="fea:new"/>
 	</metric>
 	
