@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!-- Configuration file for RecSys demo  
-	 Part 03: Demonstrating external libraries -->
+	 Part 02: Bayesian optimization -->
 
 <librec-auto>
 	<random-seed>202001</random-seed>
@@ -16,24 +16,19 @@
 	
 	<!-- SPLITTER SECTION -->
 	<splitter>
-		<model count="3">kcv</model>
+		<model>ratio</model>
+		<dim>userfixed</dim>
+		<ratio>0.8</ratio>
 		<save>true</save>
 	</splitter>
 	
 	<!-- ALGORITHM SECTION -->
-	<!-- Using Bilateral Variational Autoencoder for demonstration purposes. -->
-	<alg>
-	   <script lang="python3" src="system">
-	      <script-name>ms_recommend_wrapper.py</script-name>
-	      <param name="model">StandardVAE</param>
-	      <param name="LATENT_DIM">50</param>
-	      <param name="ENCODER_DIMS">32</param>
-	      <param name="ACT_FUNC">tanh</param>
-	      <param name="LIKELIHOOD">pois</param>
-	      <param name="NUM_EPOCHS">100</param>
-	      <param name="BATCH_SIZE">128</param>
-	      <param name="LEARNING_RATE">0.001</param>
-	   </script>
+	<!-- Using biased for demonstration purposes. -->
+	<alg ref="alg:biasedmf">
+		<similarity type="item">pcc</similarity>
+		<iterator-max>25</iterator-max>
+		<item-reg><value>0.001</value><value>0.01</value><value>0.05</value></item-reg>
+		<num-factors>20</num-factors>
 	</alg>
 
 	<!-- METRICS SECTION -->
@@ -41,6 +36,9 @@
 		<ranking>true</ranking>
 		<list-size>10</list-size>
 		<class>ndcg,precision</class>
+		<script lang="python3" src="system">
+			<script-name>expected_exposure_metric.py</script-name>
+		</script>
 	</metric>
 	
 	<!-- POST-PROCESSING SECTION -->

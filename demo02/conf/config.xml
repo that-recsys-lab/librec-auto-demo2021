@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!-- Configuration file for RecSys demo  
-	 Part 02: Bayesian optimization -->
-
+	 Part 01: Demonstrating librec-auto -->
 <librec-auto>
 	<random-seed>202001</random-seed>
 	<thread-count>1</thread-count>
@@ -16,25 +15,25 @@
 	
 	<!-- SPLITTER SECTION -->
 	<splitter>
-		<model>ratio</model>
-		<dim>userfixed</dim>
-		<ratio>0.8</ratio>
+		<model count="3">kcv</model>
 		<save>true</save>
 	</splitter>
-	
-	<optimize>
-		
-	</optimize>
+
+
+<optimize>
+		<iterations>10</iterations>
+		<metric>ndcg</metric>
+	</optimize> 
 	
 	<!-- ALGORITHM SECTION -->
 	<!-- Using biased for demonstration purposes. -->
 	<alg ref="alg:biasedmf">
-		<similarity type="item">pcc</similarity>
 		<iterator-max>25</iterator-max>
-		<item-reg><value>0.001</value><value>0.01</value><value>0.05</value></item-reg>
-		<num-factors>20</num-factors>
+		<user-reg><lower>0.000</lower><upper>0.1</upper></user-reg>
+		<item-reg><lower>0.000</lower><upper>0.1</upper></item-reg>
+		<num-factors>50</num-factors>
 	</alg>
-
+​
 	<!-- METRICS SECTION -->
 	<metric>
 		<ranking>true</ranking>
@@ -49,4 +48,5 @@
 			<param name="browser">true</param>
 		</script> 
 	</post> 
+
 </librec-auto>

@@ -16,8 +16,9 @@ these turn out to be less often recommended in FilmTrust.
 
 ### demo02
 
-The study is very similar to ``demo01`` but performs the optimization of item regularization using Bayesian black box optimization
-instead of search over fixed parameters. Re-ranking is not included.
+The study is very similar to ``demo01`` but performs the optimization of both item and user regularization using Bayesian black box optimization
+instead of search over fixed parameters. Re-ranking is not included. For demonstration purposes, only 10 iterations of optimization 
+are performed, many more would be required to get a good sampling. Note that only floating point values can be optimized in this release.
 
 ### demo03
 
