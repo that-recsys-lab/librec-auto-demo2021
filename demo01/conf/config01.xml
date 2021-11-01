@@ -54,7 +54,7 @@
 	<metric>
 		<ranking>true</ranking>
 		<list-size>50</list-size>
-		<class>ndcg,precision,icov</class>
+		<class>ndcg,precision,psp</class>
 		<protected-feature ref="fea:new"/>
 	</metric>
 	
