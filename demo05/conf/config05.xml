@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<!-- Configuration file for CIKM 2021 -->
-<!-- Adapted from video demo due to software updates -->
+<!-- Configuration file for CIKM 2021 demo
+     Part 05: Demonstrating multiple protected features: consumer-side for the evaluation,
+     provider-side for the re-ranker. -->
 
 <librec-auto>
 	<random-seed>202110</random-seed>
@@ -16,7 +17,7 @@
 	
 	<!-- FEATURES SECTION -->
 	<features>
-		<appender-class>net.librec.data.convertor.appender.UserItemFeatureAppender</appender-class>
+		<appender-class>net.librec.data.convertor.appender.UserFeatureAppender</appender-class>
 		<item-feature-file>item-features.csv</item-feature-file>
 		<protected-feature name="fea:new" type="item">new</protected-feature>
 		<user-feature-file>user-features.csv</user-feature-file>

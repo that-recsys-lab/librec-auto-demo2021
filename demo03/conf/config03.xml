@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<!-- Configuration file for RecSys demo  
+
+<!-- Configuration file for CIKM 2021 demo  
 	 Part 03: Demonstrating external libraries -->
 
 <librec-auto>
@@ -21,7 +22,7 @@
 	</splitter>
 	
 	<!-- ALGORITHM SECTION -->
-	<!-- Using Standard Variational Autoencoder for demonstration purposes. -->
+	<!-- Using Standard Variational Autoencoder from MS Recommenders library. -->
 	<alg>
 	   <script lang="python3" src="system">
 	      <script-name>ms_recommend_wrapper.py</script-name>

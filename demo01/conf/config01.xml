@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<!-- Configuration file for CIKM 2021 -->
-<!-- Adapted from video demo due to software updates -->
+<!-- Configuration file for CIKM 2021 demo -->
+<!-- Part 01: Basic functionality -->
+<!-- Adapted from demo video demo due to recent software updates -->
 
 <librec-auto>
 	<random-seed>202110</random-seed>
@@ -28,10 +29,11 @@
 	</splitter>
 	
 	<!-- ALGORITHM SECTION -->
-	<!-- Using biased for demonstration purposes. -->
+	<!-- Using biased matrix factorization just for demonstration purposes. -->
+	<!-- See default-library.xml file for different LibRec algorithms and their parameters -->
 	<alg ref="alg:biasedmf">
 		<similarity type="item">cos</similarity>
-		<iterator-max>25</iterator-max>
+		<iterator-max>25</iterator-max> <!-- Way too few iterations to be meaningful -->
 		<item-reg>
             <value>0.001</value>
             <value>0.01</value>

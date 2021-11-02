@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
-<!-- Configuration file for RecSys demo  
-	 Part 01: Demonstrating librec-auto -->
+<!-- Configuration file for CIKM 2021 demo  
+	 Part 02: Demonstrating black box optimization with optuna -->
+
 <librec-auto>
 	<random-seed>202001</random-seed>
 	<thread-count>1</thread-count>
@@ -20,13 +21,12 @@
 	</splitter>
 
 
-<optimize>
-		<iterations>10</iterations>
+	<optimize>
+		<iterations>10</iterations> <!-- Note: Demo only -- too few iterations to be meaningful -->
 		<metric>ndcg</metric>
 	</optimize> 
 	
 	<!-- ALGORITHM SECTION -->
-	<!-- Using biased for demonstration purposes. -->
 	<alg ref="alg:biasedmf">
 		<iterator-max>25</iterator-max>
 		<user-reg><lower>0.000</lower><upper>0.1</upper></user-reg>
