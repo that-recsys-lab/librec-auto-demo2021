@@ -22,7 +22,7 @@ are performed, many more would be required to get a good sampling. Note that onl
 
 ### demo03
 
-This study demonstrates the use of non-LibRec libraries. We show a study that explores different numbers of layers in the variational autoencoder implementation in the Microsoft Recommenders library.
+This study demonstrates the use of non-LibRec libraries for recommendation generation. We demonstrate the use of the variational autoencoder implementation in the Microsoft Recommenders library.
 
 ### demo04
 
