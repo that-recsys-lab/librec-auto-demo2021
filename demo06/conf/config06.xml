@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!-- Configuration file from librec-auto setup wizard. Modify as necessary.
+    Refer to https://librec-auto.readthedocs.io/en/latest/  for documentation
+    on configuration file structure. -->
+
+<!-- THIS IS MY CONFIGURATION FILE FOR RECSYS CLASS -->
+
+<librec-auto>
+        <!-- GLOBAL OPTIONS SECTION -->
+        <random-seed>202001</random-seed>
+        <thread-count>1</thread-count>
+        <library src="system">default-algorithms.xml</library>
+
+        <!-- DATA SECTION -->
+        <!-- Note: data-dir is relative to the study directory -->
+        <data>
+            <data-dir>data</data-dir>
+            <format>UIR</format>
+            <data-file format="text">tiktok-ratings-small-sample.csv</data-file>
+        </data>
+
+       
+
+        <!-- SPLITTER SECTION -->
+        <splitter>
+                <model>ratio</model>
+                <dim>userfixed</dim>
+                <ratio>0.8</ratio>
+                <save>true</save>
+        </splitter>
+
+
+        <!-- ALGORITHM SECTION -->
+
+            <!-- Option #1: Run this and you will get negative results for ndcg -->
+<!--             <alg name="alg:itemknn">
+				<class>itemknn</class>
+				<similarity type="item">pcc</similarity>
+				<neighborhood-size>
+					<value>50</value>
+					<value>100</value>
+					<value>200</value>
+				</neighborhood-size>
+				<shrinkage>10</shrinkage>
+			</alg> -->
+
+			<!-- Option #2: Run this and you will also get negative results for ndcg -->
+			<alg name="alg:userknn">
+				<class>userknn</class>
+				<similarity type="user">pcc</similarity>
+				<neighborhood-size>
+					<value>50</value>
+					<value>100</value>
+					<value>200</value>
+				</neighborhood-size>
+				<shrinkage>10</shrinkage>
+			</alg>
+
+
+<!-- RUN THIS FOR PYTHON-SIDE NDCG IMPLEMENTATION -->
+        <metric>
+            <ranking>true</ranking>
+            <list-size>
+            	<value>100</value>
+            	<value>200</value>
+            	<value>400</value>
+            </list-size>
+            <class>ndcg</class>
+
+
+        <!-- </metric> -->
+<!--             <script lang="python3" src="system">
+                <script-name>ndcg_metric.py</script-name>
+                <param name="list_size">500</param>
+            </script>  -->
+        </metric>
+
+
+        <!-- POST-PROCESSING SECTION  -->
+        <post>
+                <script lang="python3" src="system">
+                    <script-name>result_graphics.py</script-name>
+                    <param name="browser">true</param>
+                </script> 
+        </post>
+</librec-auto>
