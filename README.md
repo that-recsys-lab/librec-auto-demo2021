@@ -18,7 +18,7 @@ these turn out to be less often recommended in FilmTrust.
 
 The study is very similar to ``demo01`` but performs the optimization of both item and user regularization using Bayesian black box optimization
 instead of search over fixed parameters. Re-ranking is not included. For demonstration purposes, only 10 iterations of optimization 
-are performed, many more would be required to get a good sampling. Note that only floating point values can be optimized in this release.
+are performed, many more would be required to get a good sampling.
 
 ### demo03
 
@@ -31,6 +31,10 @@ This study demonstrate the use of non-LibRec evalulation metrics. We show an exa
 ### demo05
 
 This study demonstrates the handling of multiple feature types in `librec-auto`. We specify two protected features and use one for evaluation and a different one for re-ranking to see how the re-ranking on a provider-side criterion impacts consumer-side fairness.
+
+### demo06
+
+The study is very similar to ``demo03`` but includes Re-ranking in the optimization process.
 
 ##  Data
 
