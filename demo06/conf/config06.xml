@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!-- Configuration file for CIKM 2021 demo  
+	 Part 02: Demonstrating black box optimization with optuna -->
+
+<librec-auto>
+	<random-seed>202001</random-seed>
+	<thread-count>1</thread-count>
+	<library src="system">default-algorithms.xml</library>
+	
+	<!-- DATA SECTION -->
+	<data>
+		<data-dir>../data</data-dir>
+		<format>UIR</format>
+		<data-file format="text">ratings.csv</data-file>
+	</data>
+
+	<!-- FEATURES SECTION -->
+	<features>
+		<appender-class>net.librec.data.convertor.appender.ItemFeatureAppender</appender-class>
+		<item-feature-file>item-features.csv</item-feature-file>
+		<protected-feature name="fea:new" type="item">new</protected-feature>
+	</features>
+
+	<!-- SPLITTER SECTION -->
+	<splitter>
+		<model count="3">kcv</model>
+		<save>true</save>
+	</splitter>
+
+	<!-- OPTIMIZE SECTION -->
+	<optimize>
+		<iterations>10</iterations> <!-- Note: Demo only - too few iterations to be meaningful -->
+		<metric>ndcg</metric>
+	</optimize> 
+	
+	<!-- ALGORITHM SECTION -->
+	<alg ref="alg:biasedmf">
+		<iterator-max>25</iterator-max>
+		<user-reg><lower>0.000</lower><upper>0.1</upper></user-reg>
+		<item-reg><lower>0.000</lower><upper>0.1</upper></item-reg>
+		<num-factors>50</num-factors>
+	</alg>
+
+	<!-- RERANK SECTION -->
+	<rerank>
+		<script lang="python3" src="system">
+			<script-name>far_rerank.py</script-name>
+			<param name="max_len">10</param>
+			<param name="lambda"><lower>0.0</lower><upper>0.3</upper></param>
+			<param name="binary">False</param>
+			<param ref="fea:new"/>
+		</script>
+	</rerank>
+​
+	<!-- METRICS SECTION -->
+	<metric>
+		<ranking>true</ranking>
+		<list-size>10</list-size>
+		<class>ndcg,precision</class>
+	</metric>
+	
+	<!-- POST-PROCESSING SECTION -->
+	<post>
+		<script lang="python3" src="system">
+			<script-name>result_graphics.py</script-name>
+			<param name="browser">true</param>
+		</script> 
+	</post> 
+
+</librec-auto>
