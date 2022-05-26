@@ -20,9 +20,10 @@
 		<save>true</save>
 	</splitter>
 
-
+	 <!-- OPTIMIZE SECTION -->
+	 <!-- Note: Demo only: too few iterations to be meaningful -->
 	<optimize>
-		<iterations>10</iterations> <!-- Note: Demo only -- too few iterations to be meaningful -->
+		<iterations>10</iterations>
 		<metric>ndcg</metric>
 	</optimize> 
 	
